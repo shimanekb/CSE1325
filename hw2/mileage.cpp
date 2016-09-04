@@ -2,10 +2,6 @@
 
 using namespace std;
 
-int main() {
-    cout << "Working so far\n";
-}
-
 class Mpg_log {
     public:
         Mpg_log(double);
@@ -17,7 +13,7 @@ class Mpg_log {
         double this_gas;
 };
 
-Mpg_log :: Mpg_log (double starting_odometer) {
+Mpg_log::Mpg_log (double starting_odometer) {
     this_odometer = starting_odometer;
     last_odometer = 0;
     this_gas = 0;
@@ -31,4 +27,26 @@ void Mpg_log :: buy_gas (double odometer, double gas) {
 
 double Mpg_log :: get_current_mpg() {
     return ((this_odometer - last_odometer) / this_gas);
+}
+
+int main() {
+    double odometer;
+    double gas; 
+
+    cout << "Initial odometer: ";
+    cin >> odometer;
+    
+    Mpg_log mpg_log{odometer};
+
+    while (true) {
+        cout << "Odometer: ";
+        cin >> odometer;
+
+        cout << "Gallons: ";
+        cin >> gas;
+
+        mpg_log.buy_gas(odometer, gas);
+
+        cout << "This mpg: " << mpg_log.get_current_mpg() << "\n";
+    }
 }
