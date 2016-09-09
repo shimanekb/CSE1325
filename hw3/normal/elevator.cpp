@@ -7,7 +7,7 @@
  }
 
  void Elevator::move() {
-     if (current_floor == desired_floor) {
+     if (has_arrived()) {
          idle = true;
      }
      else if (desired_floor > current_floor){
