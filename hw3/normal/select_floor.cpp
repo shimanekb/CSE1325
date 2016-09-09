@@ -1,9 +1,15 @@
+ #include <iostream>
+ #include <string>
+ #include <vector>
+ #include <algorithm>
+ #include <cmath>
  #include "select_floor.h"
- #include "std_lib_facilities.h"
  #include "globals.h"
  #include "elevator.h"
 
- int select_floor(Elevator elevator, Vector<int> request) { 
+ using namespace std;
+
+ int select_floor(Elevator elevator, vector<int> request) { 
    //
    // Determine the next stop for this elevator
    //

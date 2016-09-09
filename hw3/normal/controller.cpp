@@ -1,8 +1,18 @@
- #include "std_lib_facilities.h"
+ #include <iostream>
+ #include <string>
+ #include <vector>
+ #include <algorithm>
+ #include <cmath>
+ #include <exception>
  #include "globals.h"
  #include "elevator.h"
  #include "view.h"
  #include "select_floor.h"
+
+ inline void keep_window_open() {
+     char ch;
+     cin >> ch;
+ }
 
  int max_floor = 0;
  int max_elevators = 1;
@@ -30,7 +40,7 @@
      if (!command.empty() && isdigit(command[0])) {
        try {
          request[atoi(command.c_str())] = TRUE;
-       } catch (Range_error e) {
+       } catch (range_error e) {
          cout << "Invalid command - enter a floor #, press Enter, or type 'exit'" << endl;
        }
      }

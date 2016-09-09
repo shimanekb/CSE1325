@@ -1,7 +1,14 @@
+ #include <iostream>
+ #include <string>
+ #include <vector>
+ #include <algorithm>
+ #include <cmath>
+ #include <iomanip>
  #include "view.h"
- #include "std_lib_facilities.h"
  #include "globals.h"
  #include "elevator.h"
+
+ using namespace std;
 
  // Graphically show this elevator
  void view_elevator(Elevator elevator) {
@@ -28,7 +35,7 @@
      cout << endl;
  }
 
- void view_requests(Vector<int> request) {
+ void view_requests(vector<int> request) {
      // Show all pending requests (shared for each elevator)
      cout << "Requests: ";
      for (int i = 0; i < request.size(); ++i) {
