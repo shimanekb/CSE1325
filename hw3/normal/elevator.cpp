@@ -3,6 +3,9 @@
  using namespace std;
 
  void Elevator::goto_floor(int floor) {
+     if (floor > top_floor)
+         throw Invalid_floor{};
+
      desired_floor = floor;
  }
 
@@ -41,5 +44,3 @@
  bool Elevator::is_idle() {
      return idle;
  }
-
-
