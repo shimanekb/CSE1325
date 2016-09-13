@@ -1,9 +1,6 @@
  #include <iostream>
  #include <string>
  #include <vector>
- #include <algorithm>
- #include <cmath>
- #include <exception>
  #include "controller.h"
  #include "globals.h"
  #include "elevator.h"

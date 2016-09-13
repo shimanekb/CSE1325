@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include "elevator.h"
+#include "controller.h"
 
 using namespace std;
 
@@ -8,6 +9,7 @@ void move_to_desire_test();
 void going_up_test();
 void going_down_test();
 void idle_test();
+void controller_singleton_instance_test();
 void assert_floor(int,int);
 void assert_arrival(Elevator&);
 void assert_going_up(Elevator&);
@@ -105,6 +107,10 @@ void move_to_desire_test() {
    assert_floor(current_floor, desired_floor);
 
    assert_arrival(elevator);
+}
+
+void controller_singleton_instance_test() {
+
 }
 
 void assert_floor(int current, int desired) {
