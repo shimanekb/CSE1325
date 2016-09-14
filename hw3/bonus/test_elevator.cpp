@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include "elevator.h"
 
@@ -28,20 +29,31 @@ string Assertion_exception::what() {
 }
 
 int main() {
+   int exit_code = 0;
+   ostringstream str;
+   ofstream my_file;
+   my_file.open("test_elevator.txt");
+
    try {
        move_to_desire_test(); 
        going_up_test();
        idle_test();
        going_down_test();
-       cout << "pass " << endl;
+       str << "pass " << endl;
    }
    catch (Invalid_floor e) {
        throw Assertion_exception("Fail - Invalid floor exception was thrown.");
    }
    catch (Assertion_exception& e) {
-       cout << "fail" << endl;
-       cout << "Reason: " << e.what() << endl;
+       str << "fail" << endl
+           << "Reason: " << e.what() << endl;
+       exit_code = 1;
    }
+
+   my_file << str.str();
+   cout << str.str();
+   my_file.close();
+   return exit_code;
 }
 
 void idle_test() {
