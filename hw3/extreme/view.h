@@ -4,5 +4,6 @@
  using namespace std;
 
  // Graphically show elevators and requests
+ void view_floors();
  void view_elevator(Elevator elevator);
  void view_requests(vector<int> request);

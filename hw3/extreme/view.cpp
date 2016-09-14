@@ -10,13 +10,15 @@
 
  using namespace std;
 
- // Graphically show this elevator
- void view_elevator(Elevator elevator) {
+ void view_floors() {
      cout << "           ";
      for (int f = 0; f <= max_floor; ++f) 
         cout << setw(3) << f;
      cout << endl;
+ }
 
+ // Graphically show this elevator
+ void view_elevator(Elevator elevator) {
      cout << "Elevator 1  ";
      for (int f = 0; f <= max_floor; ++f) {
        if (f == elevator.get_current_floor()) {

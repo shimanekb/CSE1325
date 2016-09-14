@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include "globals.h"
 #include "elevator.h"
 #include "view.h"
@@ -19,8 +18,13 @@ int Multicontroller::execute() {
     // Determine number of floors in the building (plus floor 0, the basement)
     cout << "Number of floors: ";
     cin >> max_floor;
+    
+    cout << "Number of elevators: ";
+    cin >> max_elevators;
 
-    Elevator elevator(max_floor);
+    for (int i=0; i < max_elevators; ++i) {
+        elevators.push_back(Elevator(max_floor));
+    }
 
     // Create one request for each floor - if TRUE, an elevator stop is needed
     // (vector<bool> is a degenerative case, so we can't use it - use vector<int>)
@@ -43,26 +47,36 @@ int Multicontroller::execute() {
        }
      }
 
-     // Determine the next stop for this elevator
-     int next_floor = select_floor(elevator, request);
-     cout << "***** next_floor == " << next_floor << endl;
-     if (next_floor >= 0)
-       elevator.goto_floor(next_floor);
+     // elevators info
+     cout << "max_floor = " << max_floor 
+          << ", max_elevators: " << max_elevators 
+          << endl;
 
-     // Move this elevator
-     elevator.move();
+     view_floors();
+     // For each elevator
+     for (Elevator& elevator : elevators) {
+         // Determine the next stop for this elevator
+         int next_floor = select_floor(elevator, request);
 
-     // If this elevator has reached its desired floor, clear the request
-     if (elevator.has_arrived()) 
-        request[elevator.get_current_floor()] = FALSE;
+         if (next_floor >= 0)
+           elevator.goto_floor(next_floor);
 
-     // Graphically show this elevator
-     view_elevator(elevator);
+         // Move this elevator
+         elevator.move();
+
+         // If this elevator has reached its desired floor, clear the request
+         if (elevator.has_arrived()) 
+            request[elevator.get_current_floor()] = FALSE;
+
+         // Graphically show this elevator
+         view_elevator(elevator);
+     }
 
      // List pending requests
      view_requests(request);
 
      // Get the next command
+     cout << endl;
      cout << "Floor (or Enter or 'exit'): ";
      getline(cin, command);
      cout << endl;
