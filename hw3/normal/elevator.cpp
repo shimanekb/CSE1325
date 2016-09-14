@@ -38,7 +38,7 @@
  }
 
  bool Elevator::has_arrived() {
-     return current_floor == desired_floor;
+     return current_floor == desired_floor && idle == false;
  }
 
  bool Elevator::is_idle() {
