@@ -7,8 +7,8 @@ debug: CXXFLAGS += -g
 debug: executable
 
 rebuild: clean executable
-executable: main.cpp controller.o view.o elevator.o select_floor.o
-	$(CXX) $(CXXFLAGS) main.cpp controller.o view.o elevator.o select_floor.o
+executable: test_elevator.cpp controller.o view.o elevator.o select_floor.o
+	$(CXX) $(CXXFLAGS) test_elevator.cpp controller.o view.o elevator.o select_floor.o
 controller.o: controller.cpp globals.h view.h elevator.h
 	$(CXX) $(CXXFLAGS) -w -c controller.cpp
 test_elevator.o: test_elevator.cpp elevator.h

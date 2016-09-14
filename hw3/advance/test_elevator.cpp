@@ -15,6 +15,7 @@ void assert_arrival(Elevator&);
 void assert_going_up(Elevator&);
 void assert_going_down(Elevator&);
 void assert_idle(Elevator&);
+void assert_objects_equal(Controller&, Controller&);
 
 class Invalid_floor {}; // Exception
 class Assertion_exception {
@@ -35,6 +36,7 @@ int main() {
        going_up_test();
        idle_test();
        going_down_test();
+       controller_singleton_instance_test();
        cout << "pass " << endl;
    }
    catch (Invalid_floor e) {
@@ -110,7 +112,19 @@ void move_to_desire_test() {
 }
 
 void controller_singleton_instance_test() {
+    Controller& controller = Controller::getInstance();
+    Controller& controller1 = Controller::getInstance();
 
+    assert_objects_equal(controller, controller1);
+}
+
+void assert_objects_equal(Controller& controller1, Controller& controller2)
+{
+    ostringstream str;
+    if (&controller1 != &controller2) {
+       str << "Controller getinstance does not result in a singleton.";
+       throw Assertion_exception(str.str());
+    }
 }
 
 void assert_floor(int current, int desired) {
