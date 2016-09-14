@@ -1,8 +1,7 @@
- #include "controller.h"
+ #include "multicontroller.h"
 
  int main() {
-   Controller& controller = Controller::getInstance();
-
+   Multicontroller& controller = Multicontroller::getInstance();
    controller.execute();
 
    return 0;
