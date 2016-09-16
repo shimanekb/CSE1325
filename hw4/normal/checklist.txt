@@ -1,0 +1,12 @@
+Todo Checklist for hw4
+
+#  Description                                      Status
+****************************************************************************
+1. Create use case diagram.                         Complete
+2. Create activity diagram.             
+3. Create class diagram (MVC model).
+4. Implement class diagram, With tests.
+    a. Model
+    b. View
+    c. Controller
+    d. Main
