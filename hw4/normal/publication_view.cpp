@@ -34,7 +34,8 @@ Publication PublicationView::CreatePublication() {
     std::string author;
     int copyright_year;
     Publication::Genre genre;
-    Publication::TargetAge target_age;;
+    Publication::TargetAge target_age;
+    Publication::MediaType media_type;
 
     std::cout << "Enter a unique ISBN: " << std::endl;
     std::cin >> isbn;
@@ -63,9 +64,28 @@ Publication PublicationView::CreatePublication() {
         << "3. Adult" << std::endl
         << "4. Restricted" << std::endl;
     std::cin >> input;
-    target_age = Publication::TargetAge(ConvertInputToInt(input) -1);
+    target_age = Publication::TargetAge(ConvertInputToInt(input) - 1);
 
-    return Publication (isbn, title, author, copyright_year, genre, target_age);
+    std::cout << "Choose a media type:" << std::endl
+        << "1. Book" << std::endl
+        << "2. Periodical" << std::endl
+        << "3. Newspaper" << std::endl
+        << "4. Audio" << std::endl
+        << "5. Video" << std::endl;
+    std::cin >> input;
+    media_type = Publication::MediaType(ConvertInputToInt(input) - 1);
+
+    return Publication (isbn, title, author, copyright_year, genre, target_age, media_type);
+}
+
+void PublicationView::ListPublications(std::vector<Publication> publications) {
+    int publication_count = 1;
+
+    std::cout << "List of all publications:" << std::endl;
+    for (Publication publication : publications)
+        std::cout << (publication_count++) << ". " << publication.ToString() 
+            << std::endl;; 
+        
 }
 
 void PublicationView::display_publication_add_success() {

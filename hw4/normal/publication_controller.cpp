@@ -10,6 +10,9 @@ void PublicationController::execute() {
        menu_option = view.Menu(); 
 
        switch (menu_option) {
+            case PublicationView::MenuOptions::LIST_ALL:
+                view.ListPublications(publication_repo.get_publications());
+                break;
             case PublicationView::MenuOptions::CREATE:
                 CreatePublication();
                 break;

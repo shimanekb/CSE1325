@@ -14,6 +14,7 @@ class PublicationRepo {
         bool IsGenreValid(int genre_index);
         bool IsTargetAgeValid(int target_age_index);
         bool IsCopyrightYearValid(int copyright_year);
+        bool IsMediaTypeValid(int media_type_index);
 };
 
 #endif

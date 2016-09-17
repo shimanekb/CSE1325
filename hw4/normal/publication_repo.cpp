@@ -10,7 +10,8 @@ bool PublicationRepo::add_publication(Publication publication) {
     if (IsIsbnValidUnique(publication.get_isbn()) 
             && IsGenreValid(publication.get_genre())
             && IsTargetAgeValid(publication.get_target_age())
-            && IsCopyrightYearValid(publication.get_copyright_year())) {
+            && IsCopyrightYearValid(publication.get_copyright_year())
+            && IsMediaTypeValid(publication.get_media_type())) {
         publications.push_back(publication);
         is_added = true;
     }
@@ -52,4 +53,15 @@ bool PublicationRepo::IsTargetAgeValid(int target_age_index) {
 
 bool PublicationRepo::IsCopyrightYearValid(int copyright_year) {
     return (copyright_year > 0);
+}
+
+bool PublicationRepo::IsMediaTypeValid(int media_type_index) {
+    bool valid = false;
+
+    if (media_type_index >= Publication::MediaType::BOOK
+            && Publication::MediaType::VIDEO) {
+        valid = true;
+    }
+
+    return valid;
 }
