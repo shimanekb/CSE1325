@@ -6,12 +6,14 @@ all: executable
 debug: CXXFLAGS += -g
 
 rebuild: clean executable
-executable: main.o publication_controller.o publication_view.o publication.o
-	$(CXX) $(CXXFLAGS) main.cpp publication_controller.o  publication_view.o publication.o
-publication_controller.o: publication_controller.cpp publication_view.h publication.h
-	$(CXX) $(CXXFLAGS) -c publication_controller.cpp
-publication_view.o: publication_view.cpp
-	$(CXX) $(CXXFLAGS) -c publication_view.cpp
+executable: main.cpp publication_controller.o publication_view.o publication_repo.o publication.o
+	$(CXX) $(CXXFLAGS) main.cpp publication_controller.o publication_view.o publication_repo.o publication.o
+publication_controller.o: publication_controller.cpp publication_view.h publication_repo.h publication.h
+	$(CXX) $(CXXFLAGS) -c publication_controller.cpp publication.h publication_view.h publication_repo.h
+publication_repo.o: publication_repo.cpp publication.h
+	$(CXX) $(CXXFLAGS) -c publication_repo.cpp publication.h
+publication_view.o: publication_view.cpp publication.h
+	$(CXX) $(CXXFLAGS) -c publication_view.cpp publication.h
 publication.o: publication.cpp
 	$(CXX) $(CXXFLAGS) -c publication.cpp
 clean:

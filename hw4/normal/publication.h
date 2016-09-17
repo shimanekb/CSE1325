@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 class Publication {
     public:
         enum Genre {
@@ -13,27 +11,27 @@ class Publication {
             SELF_HELP,
             PERFORMANCE
         };
-        enum TARGET_AGE {
+        enum TargetAge {
             CHILDREN,
             TEEN,
             ADULT,
             RESTRICTED 
         };
-        Publication(string isbn, string title, string author, int copyright_year
-                , Publication::Genre genre, Publication::TARGET_AGE target_age);
-        string get_isbn();
-        string get_title();
-        string get_author();
+        Publication(std::string isbn, std::string title, std::string author, int copyright_year
+                , Publication::Genre genre, Publication::TargetAge target_age);
+        std::string get_isbn();
+        std::string get_title();
+        std::string get_author();
         Genre get_genre();
         int get_copyright_year();
-        TARGET_AGE get_target_age();
+        TargetAge get_target_age();
     private:
-        const string kIsbn;
-        const string kTitle;
-        const string kAuthor;
+        const std::string kIsbn;
+        const std::string kTitle;
+        const std::string kAuthor;
         const int kCopyrightYear;
         const Publication::Genre kGenre;
-        const Publication::TARGET_AGE kTargetAge;
+        const Publication::TargetAge kTargetAge;
 };
 
 #endif

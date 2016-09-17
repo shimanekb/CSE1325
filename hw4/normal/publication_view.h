@@ -1,7 +1,8 @@
 #ifndef _PUBLICATION_VIEW_H
 #define _PUBLICATION_VIEW_H 2016
 
-    
+#include "publication.h"
+
 class PublicationView {
     public:
         enum MenuOptions {
@@ -13,5 +14,6 @@ class PublicationView {
            EXIT
         }; 
         PublicationView::MenuOptions Menu();        
+        Publication CreatePublication();
 };
 #endif
