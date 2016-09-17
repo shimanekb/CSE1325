@@ -1,5 +1,6 @@
 #include "publication_controller.h"
 #include "publication_view.h"
+#include "publication_repo.h"
 
 void PublicationController::execute() {
     PublicationView view;
@@ -17,6 +18,14 @@ void PublicationController::execute() {
 }
 
 void PublicationController::CreatePublication() {
+    bool is_added;
     PublicationView view;
+
     Publication publication = view.CreatePublication();
+    is_added = publication_repo.add_publication(publication); 
+
+    if (is_added)
+        view.display_publication_add_success();
+    else
+        view.display_publication_add_failure();
 }

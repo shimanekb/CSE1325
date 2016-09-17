@@ -7,8 +7,13 @@
 class PublicationRepo {
     public:
         std::vector<Publication> get_publications();
-        void add_publication(Publication publication);
+        bool add_publication(Publication publication);
     private:
         std::vector<Publication> publications;
+        bool IsIsbnValidUnique(std::string isbn);
+        bool IsGenreValid(int genre_index);
+        bool IsTargetAgeValid(int target_age_index);
+        bool IsCopyrightYearValid(int copyright_year);
 };
+
 #endif
