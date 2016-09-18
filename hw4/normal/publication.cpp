@@ -65,6 +65,12 @@ std::string Publication::ToString() {
         <<  GetGenreString() << " " << GetMediaTypeString() << ") ISBN: " 
         << get_isbn() << std::endl;
 
+    if (is_checked_out())
+        str << "Checked out to " << kCustomer.get_customer_name()
+            << " " << kCustomer.get_customer_phone();
+    else
+        str << "Checked in";
+
     return str.str();
 }
 

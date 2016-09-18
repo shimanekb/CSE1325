@@ -8,14 +8,14 @@ PublicationView::MenuOptions PublicationView::Menu() {
     std::string input;
     int option = 0;
     while (option < 1 || option > 6) {
-        std::cout << std::endl << "Library Main Menu:" 
+        std::cout << std::endl << "*********************" << std::endl
+            << "Library Main Menu:" <<std::endl << "*********************"
             << std::endl << std::endl
             << "1. Create new publication" << std::endl
             << "2. List all publications" << std::endl
             << "3. Check out publication" << std::endl
             << "4. Check in publication" << std::endl
-            << "5. Help" << std::endl
-            << "6. Exit" <<std::endl;    
+            << "5. Help" << std::endl << "6. Exit" <<std::endl;    
 
         std::cin >> input;
         option = ConvertInputToInt(input);
@@ -79,13 +79,11 @@ Publication PublicationView::CreatePublication() {
 }
 
 void PublicationView::ListPublications(std::vector<Publication> publications) {
-    int publication_count = 1;
-
-    std::cout << "List of all publications:" << std::endl;
+    std::cout << "*********************" << std::endl 
+        <<"List of all publications:" << std::endl
+        << "*********************" << std::endl;
     for (Publication publication : publications)
-        std::cout << (publication_count++) << ". " << publication.ToString() 
-            << std::endl;; 
-        
+        std::cout << std::endl << publication.ToString() << std::endl;
 }
 
 void PublicationView::display_publication_add_success() {
