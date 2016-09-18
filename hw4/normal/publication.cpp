@@ -5,9 +5,26 @@ Publication::Publication(std::string isbn, std::string title, std::string author
         int copyright_year, Publication::Genre genre, 
         Publication::TargetAge target_age, 
         Publication::MediaType media_type)
+    :Publication(isbn, title, author, copyright_year, genre, target_age,
+            media_type, false) {}
+
+Publication::Publication(std::string isbn, std::string title, std::string author, 
+        int copyright_year, Publication::Genre genre, 
+        Publication::TargetAge target_age, 
+        Publication::MediaType media_type, bool is_checkedout)
+    :Publication(isbn, title, author, copyright_year, genre, target_age,
+            media_type, is_checkedout, Customer("NA", "NA")) {}
+
+
+Publication::Publication(std::string isbn, std::string title, std::string author, 
+        int copyright_year, Publication::Genre genre, 
+        Publication::TargetAge target_age, 
+        Publication::MediaType media_type, bool is_checkedout, Customer customer)
     : kIsbn(isbn), kTitle(title), 
     kAuthor(author), kCopyrightYear(copyright_year), 
-    kGenre(genre), kTargetAge(target_age), kMediaType(media_type) {}
+    kGenre(genre), kTargetAge(target_age), kMediaType(media_type),
+    kIsCheckedout(is_checkedout), kCustomer(customer) {}
+
 
 std::string Publication::get_isbn() {
     return kIsbn;
@@ -35,6 +52,10 @@ Publication::TargetAge Publication::get_target_age() {
 
 Publication::MediaType Publication::get_media_type() {
     return kMediaType;
+}
+
+bool Publication::is_checked_out() {
+    return kIsCheckedout;
 }
 
 std::string Publication::ToString() {
