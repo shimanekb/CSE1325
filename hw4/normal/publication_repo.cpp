@@ -20,12 +20,14 @@ bool PublicationRepo::add_publication(Publication publication) {
     return is_added;
 }
 
-bool PublicationRepo::CheckoutPublication(std::string isbn, Customer customer) {
+bool PublicationRepo::CheckoutPublication(std::string isbn, 
+        std::string customer_name, std::string customer_phone) {
    bool is_checkedout = false;
    for (Publication &publication : publications) {
         if (publication.get_isbn() == isbn) {
             publication.set_checkout(true);
-            publication.set_customer(customer);
+            publication.set_customer_name(customer_name);
+            publication.set_customer_phone(customer_phone);
             is_checkedout = true;
         }
    } 

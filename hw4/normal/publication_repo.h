@@ -10,7 +10,8 @@ class PublicationRepo {
         std::vector<Publication> get_publications();
         bool add_publication(Publication publication);
         Publication FindByIsbn(std::string isbn);
-        bool CheckoutPublication(std::string isbn, Customer customer);
+        bool CheckoutPublication(std::string isbn, std::string customer_name,
+                std::string customer_phone);
         bool IsIsbnValidUnique(std::string isbn);
     private:
         std::vector<Publication> publications;

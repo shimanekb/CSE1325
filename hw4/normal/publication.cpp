@@ -13,17 +13,19 @@ Publication::Publication(std::string isbn, std::string title, std::string author
         Publication::TargetAge target_age, 
         Publication::MediaType media_type, bool is_checkedout)
     :Publication(isbn, title, author, copyright_year, genre, target_age,
-            media_type, is_checkedout, Customer("NA", "NA")) {}
+            media_type, is_checkedout, "NA", "NA") {}
 
 
 Publication::Publication(std::string isbn, std::string title, std::string author, 
         int copyright_year, Publication::Genre genre, 
         Publication::TargetAge target_age, 
-        Publication::MediaType media_type, bool is_checkedout, Customer customer)
+        Publication::MediaType media_type, bool is_checkedout, 
+        std::string customer_name, std::string customer_phone)
     : kIsbn(isbn), kTitle(title), 
     kAuthor(author), kCopyrightYear(copyright_year), 
     kGenre(genre), kTargetAge(target_age), kMediaType(media_type),
-    is_checkedout(is_checkedout), customer(customer) {}
+    is_checkedout(is_checkedout), customer_phone(customer_phone), 
+    customer_name(customer_name) {}
 
 
 std::string Publication::get_isbn() {
@@ -63,8 +65,12 @@ void Publication::set_checkout(bool status) {
     is_checkedout = status;
 }
 
-void Publication::set_customer(const Customer& cust) {
-    Customer customer = cust;
+void Publication::set_customer_name(std::string name) {
+    customer_name = name;
+}
+
+void Publication::set_customer_phone(std::string phone) {
+    customer_phone = phone;
 }
 
 std::string Publication::ToString() {
@@ -75,8 +81,8 @@ std::string Publication::ToString() {
         << get_isbn() << std::endl;
 
     if (is_checked_out())
-        str << "Checked out to " << customer.get_customer_name()
-            << " " << customer.get_customer_phone();
+        str << "Checked out to " << customer_name
+            << " " << customer_phone;
     else
         str << "Checked in";
 

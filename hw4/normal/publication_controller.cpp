@@ -25,6 +25,8 @@ void PublicationController::execute() {
 
 void PublicationController::CheckoutPublication() {
     std::string isbn;
+    std::string customer_name;
+    std::string customer_phone;
     PublicationView view;
 
     view.display_checkout_title();
@@ -35,10 +37,11 @@ void PublicationController::CheckoutPublication() {
         return;
     }
         
-    Customer customer = Customer(view.AskForCustomerName(), 
-            view.AskForCustomerPhone());
+    customer_name = view.AskForCustomerName();
+    customer_phone = view.AskForCustomerPhone();
 
-    if (publication_repo.CheckoutPublication(isbn, customer))
+    if (publication_repo.CheckoutPublication(isbn, customer_name, 
+                customer_phone))
         view.display_checkout_success();
 }
 
