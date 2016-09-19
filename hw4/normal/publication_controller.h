@@ -4,6 +4,7 @@
 #include <vector>
 #include "publication.h"
 #include "publication_repo.h"
+#include "customer.h"
 
 class PublicationController {
     public:
@@ -11,6 +12,7 @@ class PublicationController {
     private:
         void Menu();
         void CreatePublication();
+        void CheckoutPublication();
         PublicationRepo publication_repo;
 };
 

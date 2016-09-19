@@ -4,8 +4,7 @@
 #include <string>
 #include "customer.h"
 
-class Publication {
-    public:
+class Publication { public:
         enum Genre {
             FICTION,
             NON_FICTION,
@@ -42,6 +41,8 @@ class Publication {
         TargetAge get_target_age();
         MediaType get_media_type();
         bool is_checked_out();
+        void set_checkout(bool status);
+        void set_customer(const Customer& cust);
         std::string ToString();
     private:
         const std::string kIsbn;
@@ -51,8 +52,8 @@ class Publication {
         const Publication::Genre kGenre;
         const Publication::TargetAge kTargetAge;
         const Publication::MediaType kMediaType;
-        const bool kIsCheckedout;
-        const Customer kCustomer;
+        bool is_checkedout;
+        Customer customer;
         std::string GetGenreString();
         std::string GetTargetAgeString();
         std::string GetMediaTypeString();

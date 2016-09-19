@@ -71,8 +71,7 @@ Publication PublicationView::CreatePublication() {
         << "2. Periodical" << std::endl
         << "3. Newspaper" << std::endl
         << "4. Audio" << std::endl
-        << "5. Video" << std::endl;
-    std::cin >> input;
+        << "5. Video" << std::endl; std::cin >> input;
     media_type = Publication::MediaType(ConvertInputToInt(input) - 1);
 
     return Publication (isbn, title, author, copyright_year, genre, target_age, media_type);
@@ -93,6 +92,45 @@ void PublicationView::display_publication_add_success() {
 void PublicationView::display_publication_add_failure() {
     std::cout << "Publication creation failure." << std::endl
         << "Reason: Invalid input or non unique isbn." << std::endl;
+}
+
+std::string PublicationView::AskForIsbn() {
+    std::string isbn;
+    std::cout << "Enter ISBN of publication you wish to check-in/out:" 
+        << std::endl;
+    std::cin >> isbn;
+    return isbn;
+}
+std::string PublicationView::AskForCustomerName() {
+    std::string customer_name;
+
+    std::cout << "Enter your name:" << std::endl;
+    std::cin >> customer_name;
+
+    return customer_name;
+}
+
+std::string PublicationView::AskForCustomerPhone() {
+    std::string customer_phone;
+
+    std::cout << "Enter your phone number:" << std::endl;
+    std::cin >> customer_phone;
+
+    return customer_phone;
+}
+
+void PublicationView::display_checkout_title() {
+    std::cout << std::endl << "*********************" << std::endl 
+        << "Publication Checkout" << std::endl << "*********************" 
+        << std::endl << std::endl;
+}
+
+void PublicationView::display_isbn_does_not_exit() {
+    std::cout << "Publication with provided Isbn does not exist." << std::endl;
+}
+
+void PublicationView::display_checkout_success() {
+    std::cout << "Check out successful." << std::endl;
 }
 
 int PublicationView::ConvertInputToInt(std::string input) {

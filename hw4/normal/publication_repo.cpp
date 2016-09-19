@@ -1,3 +1,4 @@
+#include <cstddef>
 #include "publication_repo.h"
 
 std::vector<Publication> PublicationRepo::get_publications() {
@@ -18,7 +19,20 @@ bool PublicationRepo::add_publication(Publication publication) {
 
     return is_added;
 }
-        
+
+bool PublicationRepo::CheckoutPublication(std::string isbn, Customer customer) {
+   bool is_checkedout = false;
+   for (Publication &publication : publications) {
+        if (publication.get_isbn() == isbn) {
+            publication.set_checkout(true);
+            publication.set_customer(customer);
+            is_checkedout = true;
+        }
+   } 
+
+   return is_checkedout;
+}
+
 bool PublicationRepo::IsIsbnValidUnique(std::string isbn) {
     bool unique = true;
     for (Publication publication : publications) {

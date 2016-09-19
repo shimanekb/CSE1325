@@ -23,7 +23,7 @@ Publication::Publication(std::string isbn, std::string title, std::string author
     : kIsbn(isbn), kTitle(title), 
     kAuthor(author), kCopyrightYear(copyright_year), 
     kGenre(genre), kTargetAge(target_age), kMediaType(media_type),
-    kIsCheckedout(is_checkedout), kCustomer(customer) {}
+    is_checkedout(is_checkedout), customer(customer) {}
 
 
 std::string Publication::get_isbn() {
@@ -55,7 +55,16 @@ Publication::MediaType Publication::get_media_type() {
 }
 
 bool Publication::is_checked_out() {
-    return kIsCheckedout;
+
+    return is_checkedout;
+}
+
+void Publication::set_checkout(bool status) {
+    is_checkedout = status;
+}
+
+void Publication::set_customer(const Customer& cust) {
+    Customer customer = cust;
 }
 
 std::string Publication::ToString() {
@@ -66,8 +75,8 @@ std::string Publication::ToString() {
         << get_isbn() << std::endl;
 
     if (is_checked_out())
-        str << "Checked out to " << kCustomer.get_customer_name()
-            << " " << kCustomer.get_customer_phone();
+        str << "Checked out to " << customer.get_customer_name()
+            << " " << customer.get_customer_phone();
     else
         str << "Checked in";
 
@@ -103,8 +112,7 @@ std::string Publication::GetTargetAgeString() {
             break;
         case Publication::TargetAge::TEEN:
             target_age = "teen";
-            break;
-        case Publication::TargetAge::ADULT:
+            break; case Publication::TargetAge::ADULT:
             target_age = "adult";
             break;
         case Publication::TargetAge::RESTRICTED:

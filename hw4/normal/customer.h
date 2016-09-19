@@ -6,6 +6,7 @@
 class Customer {
     public:
         Customer(std::string customer_name, std::string customer_phone);
+        Customer(const Customer& customer);
         std::string get_customer_name() const;
         std::string get_customer_phone() const;
     private:
