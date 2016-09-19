@@ -22,14 +22,15 @@ void PublicationController::execute() {
             case PublicationView::MenuOptions::CHECKIN:
                 CheckinPublication();
                 break;
+            case PublicationView::MenuOptions::HELP:
+                view.display_help_information();
+                break;
         }
    }
 }
 
 void PublicationController::CheckinPublication() {
     std::string isbn;
-    std::string customer_name;
-    std::string customer_phone;
     PublicationView view;
 
     view.display_checkin_title();
@@ -39,12 +40,8 @@ void PublicationController::CheckinPublication() {
         view.display_isbn_does_not_exit();
         return;
     }
-        
-    customer_name = view.AskForCustomerName();
-    customer_phone = view.AskForCustomerPhone();
 
-    if (publication_repo.CheckinPublication(isbn, customer_name, 
-                customer_phone))
+    if (publication_repo.CheckinPublication(isbn))
         view.display_checkin_success();
     else
         view.display_checkin_failure();

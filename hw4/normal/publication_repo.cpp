@@ -20,14 +20,11 @@ bool PublicationRepo::add_publication(Publication publication) {
     return is_added;
 }
 
-bool PublicationRepo::CheckinPublication(std::string isbn, 
-        std::string customer_name, std::string customer_phone) {
+bool PublicationRepo::CheckinPublication(std::string isbn) {
    bool is_checkedin = false;
    for (Publication &publication : publications) {
         if (publication.get_isbn() == isbn 
-                && publication.is_checked_out() == true
-                && publication.get_customer_name() == customer_name
-                && publication.get_customer_phone() == customer_phone) {
+                && publication.is_checked_out() == true) {
             publication.set_checkout(false);
             publication.set_customer_name("NA");
             publication.set_customer_phone("NA");
@@ -42,7 +39,8 @@ bool PublicationRepo::CheckoutPublication(std::string isbn,
         std::string customer_name, std::string customer_phone) {
    bool is_checkedout = false;
    for (Publication &publication : publications) {
-        if (publication.get_isbn() == isbn) {
+        if (publication.get_isbn() == isbn
+                && publication.is_checked_out() == false) {
             publication.set_checkout(true);
             publication.set_customer_name(customer_name);
             publication.set_customer_phone(customer_phone);
