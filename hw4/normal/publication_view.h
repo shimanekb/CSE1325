@@ -24,7 +24,11 @@ class PublicationView {
         void ListPublications(std::vector<Publication> publications);
         void DisplayPublication(Publication publication);
         void display_checkout_title();
+        void display_checkin_title();
+        void display_checkin_success();
+        void display_checkin_failure();
         void display_checkout_success();
+        void display_checkout_failure();
         void display_publication_add_success();
         void display_publication_add_failure();
         void display_isbn_does_not_exit();

@@ -13,6 +13,7 @@ class PublicationController {
         void Menu();
         void CreatePublication();
         void CheckoutPublication();
+        void CheckinPublication();
         PublicationRepo publication_repo;
 };
 

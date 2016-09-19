@@ -45,6 +45,8 @@ class Publication { public:
         void set_checkout(bool status);
         void set_customer_name(std::string name);
         void set_customer_phone(std::string phone);
+        std::string get_customer_name();
+        std::string get_customer_phone();
         std::string ToString();
     private:
         const std::string kIsbn;

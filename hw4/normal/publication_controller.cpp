@@ -19,8 +19,36 @@ void PublicationController::execute() {
             case PublicationView::MenuOptions::CHECKOUT:
                 CheckoutPublication();
                 break;
+            case PublicationView::MenuOptions::CHECKIN:
+                CheckinPublication();
+                break;
         }
    }
+}
+
+void PublicationController::CheckinPublication() {
+    std::string isbn;
+    std::string customer_name;
+    std::string customer_phone;
+    PublicationView view;
+
+    view.display_checkin_title();
+    isbn = view.AskForIsbn();
+
+    if (publication_repo.IsIsbnValidUnique(isbn)) {
+        view.display_isbn_does_not_exit();
+        return;
+    }
+        
+    customer_name = view.AskForCustomerName();
+    customer_phone = view.AskForCustomerPhone();
+
+    if (publication_repo.CheckinPublication(isbn, customer_name, 
+                customer_phone))
+        view.display_checkin_success();
+    else
+        view.display_checkin_failure();
+
 }
 
 void PublicationController::CheckoutPublication() {
@@ -43,6 +71,8 @@ void PublicationController::CheckoutPublication() {
     if (publication_repo.CheckoutPublication(isbn, customer_name, 
                 customer_phone))
         view.display_checkout_success();
+    else
+        view.display_checkout_failure();
 }
 
 void PublicationController::CreatePublication() {

@@ -152,3 +152,11 @@ std::string Publication::GetMediaTypeString() {
     return media_type;
 
 }
+
+std::string Publication::get_customer_name() {
+    return customer_name;
+}
+
+std::string Publication::get_customer_phone() {
+    return customer_phone;
+}

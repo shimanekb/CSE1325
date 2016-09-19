@@ -119,6 +119,12 @@ std::string PublicationView::AskForCustomerPhone() {
     return customer_phone;
 }
 
+void PublicationView::display_checkin_title() {
+    std::cout << std::endl << "*********************" << std::endl 
+        << "Publication Checkin" << std::endl << "*********************" 
+        << std::endl << std::endl;
+}
+
 void PublicationView::display_checkout_title() {
     std::cout << std::endl << "*********************" << std::endl 
         << "Publication Checkout" << std::endl << "*********************" 
@@ -131,6 +137,20 @@ void PublicationView::display_isbn_does_not_exit() {
 
 void PublicationView::display_checkout_success() {
     std::cout << "Check out successful." << std::endl;
+}
+
+void PublicationView::display_checkout_failure() {
+    std::cout << "Check out failed." << std::endl
+        << "Reason: Isbn does not exist." << std::endl;
+}
+
+void PublicationView::display_checkin_success() {
+    std::cout << "Check in successful." << std::endl;
+}
+
+void PublicationView::display_checkin_failure() {
+    std::cout << "Check in failed." << std::endl
+        << "Reason: Isbn does not exist." << std::endl;
 }
 
 int PublicationView::ConvertInputToInt(std::string input) {
