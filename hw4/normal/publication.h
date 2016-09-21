@@ -2,7 +2,6 @@
 #define _PUBLICATION_H 2016
 
 #include <string>
-#include "customer.h"
 
 class Publication { public:
         enum Genre {

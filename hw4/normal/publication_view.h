@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "publication.h"
-#include "customer.h"
 
 class PublicationView {
     public:

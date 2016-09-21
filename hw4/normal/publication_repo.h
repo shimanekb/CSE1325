@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "publication.h"
-#include "customer.h"
 
 class PublicationRepo {
     public:

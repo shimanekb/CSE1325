@@ -4,7 +4,6 @@
 #include <vector>
 #include "publication.h"
 #include "publication_repo.h"
-#include "customer.h"
 
 class PublicationController {
     public:
