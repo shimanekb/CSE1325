@@ -30,7 +30,7 @@ class PublicationView {
         void display_checkout_failure();
         void display_publication_add_success();
         void display_publication_add_failure();
-        void display_isbn_does_not_exit();
+        void display_isbn_does_not_exist();
         void display_help_information();
     private:
         int ConvertInputToInt(std::string input);

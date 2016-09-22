@@ -37,7 +37,7 @@ void PublicationController::CheckinPublication() {
     isbn = view.AskForIsbn();
 
     if (publication_repo.IsIsbnValidUnique(isbn)) {
-        view.display_isbn_does_not_exit();
+        view.display_isbn_does_not_exist();
         return;
     }
 
@@ -58,7 +58,7 @@ void PublicationController::CheckoutPublication() {
     isbn = view.AskForIsbn();
 
     if (publication_repo.IsIsbnValidUnique(isbn)) {
-        view.display_isbn_does_not_exit();
+        view.display_isbn_does_not_exist();
         return;
     }
         

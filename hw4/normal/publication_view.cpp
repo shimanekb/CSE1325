@@ -132,7 +132,7 @@ void PublicationView::display_checkout_title() {
         << std::endl << std::endl;
 }
 
-void PublicationView::display_isbn_does_not_exit() {
+void PublicationView::display_isbn_does_not_exist() {
     std::cout << "Publication with provided Isbn does not exist." << std::endl;
 }
 
